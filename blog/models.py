@@ -27,3 +27,20 @@ class Post(models.Model):
         '''函数 __str__ 定义当调用对象的 str() 方法时的返回值内容'''
         # return self.title 将文章标题返回
         return self.title
+
+
+class Comment(models.Model):
+    '''创建评论模型类'''
+    post = models.ForeignKey(
+        Post, on_delete=models.CASCADE, related_name='comments')
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return 'Comment {} by {}'.format(self.body, self.name)
