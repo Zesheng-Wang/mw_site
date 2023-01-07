@@ -1,5 +1,5 @@
 from django.views import generic
-from .models import Post
+from .models import Post, Category
 from .forms import CommentForm
 from django.shortcuts import render, get_object_or_404
 
@@ -17,6 +17,7 @@ class PostList(generic.ListView):
 
 
 def post_detail(request, slug):
+    category = Category.objects.get(slug=slug)
     template_name = 'post_detail.html'
     post = get_object_or_404(Post, slug=slug)
     comments = post.comments.filter(active=True)
@@ -38,4 +39,5 @@ def post_detail(request, slug):
     return render(request, template_name, {'post': post,
                                            'comments': comments,
                                            'new_comment': new_comment,
+                                           'category': category,
                                            'comment_form': comment_form})

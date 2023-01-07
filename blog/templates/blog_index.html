@@ -1,29 +1,9 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>我的博客主页</h1>
-    {% for post in post_list %}
-    <div class="card mb-4">
-      <div class="card-body">
-        <h2 class="card-title">{{ post.title }}</h2>
-        <p class="card-text text-muted h6">
-          {{ post.author }} | {{ post.created_on}}
-        </p>
-        <p class="card-text">{{post.content|slice:":200" }}</p>
-        <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary"
-          >Read More &rarr;</a
-        >
-      </div>
-    </div>
-    {% endfor %}
-    <script src="{% static 'js/click_to_text.js' %}"></script>
-  </body>
-</html>
+{% extends 'blog_base.html' %} {% block content %}
+
+<h1>我的博客主页</h1>
+{% for post in post_list %}
+<h2>{{ post.title }}</h2>
+<p>{{ post.author }} | {{ post.created_on}}</p>
+<p>{{post.content|slice:":200" }}</p>
+<a href="{% url 'post_detail' post.slug  %}">Read More &rarr;</a>
+{% endfor %} {% endblock content %}
