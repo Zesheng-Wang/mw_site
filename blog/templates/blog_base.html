@@ -9,6 +9,21 @@
     <title>Document</title>
   </head>
   <body>
+    <!-- navbar -->
+    <nav class="nav collapsible">
+      <a class="nav__brand" href="/"
+        ><img src="{% static 'images/logo.svg' %}" alt=""
+      /></a>
+      <svg class="icon icon--white nav__toggler">
+        <use xlink:href="{% static 'images/sprite.svg#menu' %}"></use>
+      </svg>
+      <ul class="list nav__list collapsible__content">
+        <li class="nav__item"><a href="#">主页</a></li>
+        <li class="nav__item"><a href="#">VPS</a></li>
+        <li class="nav__item"><a href="#">Domain</a></li>
+        <li class="nav__item"><a href="#">About</a></li>
+      </ul>
+    </nav>
     {% block content %}
     <!-- Content Goes here -->
     {% endblock content %}
