@@ -1,12 +1,28 @@
 {% extends 'blog_base.html' %} {% block content %}
 
-<h1>我的博客主页</h1>
-{% for post in post_list %}
+{% comment %} {% for post in post_list %}
 <h2>{{ post.title }}</h2>
 <p>{{ post.author }} | {{ post.created_on}}</p>
 <p>{{post.content|slice:":200" }}</p>
 <a href="{% url 'post_detail' post.slug  %}">Read More &rarr;</a>
+{% endfor %}  {% endcomment %}
+
+{% for post in post_list %}
+<div class="card">
+  <img src="https://images.unsplash.com/photo-1615147342761-9238e15d8b96?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1001&q=80" class="card__image" alt="brown couch" />
+  <div class="card__content">
+    <time class="card__date">{{ post.created_on}}</time>
+    <span class="card__title">{{ post.title }}<span>
+  </div>
+  <a href="{% url 'post_detail' post.slug  %}">Read More &rarr;</a>
+</div>
 {% endfor %} 
+
+
+
+
+
+
 
 
 {% if is_paginated %}

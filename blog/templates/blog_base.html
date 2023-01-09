@@ -5,25 +5,38 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Sans&family=Vollkorn:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
     <title>Document</title>
   </head>
   <body>
     <!-- navbar -->
-    <nav class="nav collapsible">
-      <a class="nav__brand" href="/"
-        ><img src="{% static 'images/logo.svg' %}" alt=""
-      /></a>
-      <svg class="icon icon--white nav__toggler">
-        <use xlink:href="{% static 'images/sprite.svg#menu' %}"></use>
-      </svg>
-      <ul class="list nav__list collapsible__content">
-        <li class="nav__item"><a href="#">主页</a></li>
-        <li class="nav__item"><a href="#">VPS</a></li>
-        <li class="nav__item"><a href="#">Domain</a></li>
-        <li class="nav__item"><a href="#">About</a></li>
-      </ul>
-    </nav>
+    <div class="nav">
+      <input type="checkbox" id="nav-check" />
+      <div class="nav-header">
+        <div class="nav-title">昨夜星河</div>
+      </div>
+      <div class="nav-btn">
+        <label for="nav-check">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+      </div>
+
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="{% url 'home' %}">Blog</a>
+        <a href="#">About</a>
+      </div>
+    </div>
+
     {% block content %}
     <!-- Content Goes here -->
     {% endblock content %}
@@ -31,6 +44,7 @@
     <footer>
       <p>Copyright &copy; Zesheng</p>
     </footer>
+    <script src="{% static 'js/navbar.js' %}"></script>
     <script src="{% static 'js/click_to_text.js' %}"></script>
   </body>
 </html>
