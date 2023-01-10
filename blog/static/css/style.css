@@ -87,6 +87,10 @@ p {
     }
 }
 
+a {
+    text-decoration: none;
+}
+
 .nav {
     height: 6rem;
     width: 100%;
@@ -263,6 +267,7 @@ p {
     padding: 0 4px;
     margin-left: -4px;
 }
-.article__content{
-    
+
+a {
+    text-decoration: none;
 }

@@ -42,3 +42,12 @@ def post_detail(request, slug):
                                            'new_comment': new_comment,
                                            'category': category,
                                            'comment_form': comment_form})
+
+
+def search(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        blogs = post.objects.filter(title__contains=searched)
+        return render(request, "search.html", {'searched': searched, 'blogs': blogs})
+    else:
+        return render(request, "search.html", {})

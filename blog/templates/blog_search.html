@@ -1,0 +1,21 @@
+{% extends 'blog_base.html' %} {% block content %} {% if searched %}
+
+<div class="container mt-5 mb-3">
+  <div class="row">
+    {% for blog in blogs %}
+    <div class="col-lg-4 my-4">
+      <div class="card shadow" style="width: 20rem; height: 33rem">
+        <div class="card-body">
+          <h5 class="card-title">
+            {{blog.title}} <br /><small>by {{blog.author}}</small>
+          </h5>
+          <p class="card-text">{{blog.content| truncatechars:210}}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% else %}
+<h1>You forgot to search</h1>
+{% endif %} {% endblock %}

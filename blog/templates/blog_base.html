@@ -35,6 +35,10 @@
         <a href="{% url 'home' %}">Blog</a>
         <a href="#">About</a>
       </div>
+      <form class="d-flex" method="POST" action="/search/"> {% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Search" name="searched" id="searched" aria-label="Search">
+        <button href="/search/" class="btn btn-outline-secondary" type="submit">Search</button>
+      </form>
     </div>
 
     {% block content %}
@@ -44,7 +48,6 @@
     <footer>
       <p>Copyright &copy; Zesheng</p>
     </footer>
-    <script src="{% static 'js/navbar.js' %}"></script>
     <script src="{% static 'js/click_to_text.js' %}"></script>
   </body>
 </html>
