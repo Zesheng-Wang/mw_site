@@ -9,11 +9,30 @@
     <title>Document</title>
   </head>
   <body>
-    <nav>我是一个导航条
+    <nav>
+      我是一个导航条
       <ul>
         <li>About</li>
         <li>Blog</li>
         <li>Asd</li>
+        <form class="d-flex" method="POST" action="/search/">
+          {% csrf_token %}
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            name="searched"
+            id="searched"
+            aria-label="Search"
+          />
+          <button
+            href="/search/"
+            class="btn btn-outline-secondary"
+            type="submit"
+          >
+            Search
+          </button>
+        </form>
       </ul>
     </nav>
     <main>我是主体部分</main>
